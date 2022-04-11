@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+    <div id="app">
+        <nav-bar></nav-bar>
+        <router-view/>
+        <bottom-bar></bottom-bar>
+    </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+    import NavBar from "@/components/NavBar";
+    import BottomBar from "@/components/BottomBar";
 
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-};
+    export default {
+        name: 'App',
+        components: {NavBar, BottomBar},
+        methods: {
+            isMobile: function () {
+                const ua = navigator.userAgent;
+                return ((ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1) ||
+                    (!!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)));
+            }
+        },
+        beforeMount() {
+            if (this.isMobile()) {
+                this.$('body').css('font-size', '12px');
+            }
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

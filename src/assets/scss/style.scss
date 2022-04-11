@@ -1,0 +1,154 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+  outline-color: skyblue;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  background-color: #f1f1f1;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+// text overflow /* 文本不换行，内容超过节点宽度就使用...省略 */
+.text-ellipse {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis; // 隐藏超过的文本
+  white-space: nowrap;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.active {
+  color: #41B883;
+  text-decoration: underline map-get($colors, 'vue') 3px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: map-get($colors, 'vue');
+}
+
+
+/* 遍历生成字体色与背景色 */
+@each $key, $val in $colors {
+  .text-#{$key} {
+    color: $val;
+  }
+
+  .bg-#{$key} {
+    background-color: $val;
+  }
+}
+
+/* 遍历生成文本方向 */
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+
+/* 遍历生成字体大小 */
+@each $key, $size in $font-sizes {
+  .fs-#{$key} {
+    font-size: $size * $base-font-size;
+  }
+}
+
+/* flex布局 */
+@each $key, $val in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $val;
+  }
+}
+
+@each $key, $val in $flex-ai {
+  .ai-#{$key} {
+    align-items: $val;
+  }
+}
+
+/* margin padding 上下左右 生成 */
+@each $typeKey, $type in $spacing-types {
+  // .m-1
+  @each $sizeKey, $size in $spacing-sizes {
+    // m-1 {margin-top: 0.25.rem;}
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+
+  // .mx-1
+  @each $sizeKey, $size in $spacing-sizes {
+    // mx-1 {margin-top: 0.25.rem;}
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+
+    // my-1 {margin-top: 0.25.rem;}
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+
+  // .mt-1
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
+      // mt-1 {margin-top: 0.25.rem;}
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size;
+      }
+    }
+  }
+  .#{$typeKey} {
+    #{$type}: 0;
+  }
+}

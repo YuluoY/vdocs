@@ -1,0 +1,57 @@
+// colors
+$colors: (
+        grey:#F5F5F5,
+        vue:#41B883
+);
+
+// 字体大小
+$base-font-size: 1rem;
+$font-sizes: (
+        xxs: 0.75, // 12px
+        xs: 0.875, // 14px
+        sm: 1, // 16px
+        md: 1.125, // 18px
+        lg: 1.25, // 20px
+        xl: 1.5, // 22px
+        xxl: 2
+);
+
+// flex布局相关
+$flex-jc: (
+        "start": flex-start,
+        "end": flex-end,
+        "center": center,
+        "between": space-between,
+        "around": space-around,
+);
+$flex-ai: (
+        "start": flex-start,
+        "end": flex-end,
+        "center": center,
+        "stretch": stretch,
+);
+
+// spacing
+// 0-5: 0
+// .mt-1 => margin top .pb-2
+$spacing-base-size: 1rem;
+$spacing-types: (
+        m: margin,
+        p: padding,
+);
+$spacing-directions: (
+        t: top,
+        r: right,
+        b: bottom,
+        l: left,
+);
+$spacing-base-size: 1rem;
+$spacing-sizes: (
+        0: 0,
+        1: 0.5,
+        2: 1,
+        3: 1.3,
+        4: 1.5,
+        5: 2.5,
+        6: 3.5,
+);
