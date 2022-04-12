@@ -1,19 +1,21 @@
 <template>
-    <div id="navbar" class="w-100">
+    <div id="navbar" class="w-100 bg-white">
         <div class="top-bar d-flex jc-between">
-            <div class="d-flex ai-center">
-                <router-link to="/" tag="a"><img class="logo ml-3 my-1" :src="nav.logo"></router-link>
-                <span class="name fs-lg mx-3">{{ nav.name }}</span>
+            <div class="d-flex ai-center ml-3">
+                <router-link to="/" tag="a"><img class="logo ml-3 my-1 bg-grey" :src="nav.logo"></router-link>
+                <span class="name fs-lg mx-1">{{ nav.name }}</span>
             </div>
-            <div class="nav d-flex ai-center jc-end fs-md">
+            <div class="nav d-flex ai-center jc-end fs-md text-ellipse">
                 <router-link
                         :ref="n"
                         :to="`/${initialChange(n)}`"
                         tag="a"
-                        :class="`px-3`"
+                        :class="`pr-5`"
+                        :title="n"
                         v-for="(n, i) in nav.navInfo" :key="i">
                     <i :class="n==='GitHub'?'iconfont icon-github':''" style="font-size: 1.2rem"></i>
                     {{ n }}
+                    <i :class="n==='GitHub'?'iconfont icon-caozuo-wailian':''" style="font-size: 1.2rem"></i>
                 </router-link>
             </div>
         </div>
@@ -53,7 +55,7 @@
     position: sticky; // 顶部导航栏吸顶
     top: 0;
     z-index: 99;
-    background-color: white;
+    box-shadow: 0px 0px 20px #A7B1C0;
   }
 
   .logo {
@@ -63,5 +65,12 @@
 
   .nav {
     flex-grow: 1;
+  }
+  .name{
+    text-align: center;
+    white-space: nowrap;
+  }
+  a{
+    transition: 0.45s;
   }
 </style>

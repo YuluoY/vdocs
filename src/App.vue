@@ -2,17 +2,15 @@
     <div id="app">
         <nav-bar></nav-bar>
         <router-view/>
-        <bottom-bar></bottom-bar>
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/NavBar";
-    import BottomBar from "@/components/BottomBar";
 
     export default {
         name: 'App',
-        components: {NavBar, BottomBar},
+        components: {NavBar},
         methods: {
             isMobile: function () {
                 const ua = navigator.userAgent;
@@ -22,12 +20,11 @@
         },
         beforeMount() {
             if (this.isMobile()) {
-                this.$('body').css('font-size', '12px');
+                this.$('html').css('font-size', '9px');
             }
-        }
+        },
     }
 </script>
 
 <style>
-
 </style>

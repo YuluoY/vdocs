@@ -14,11 +14,15 @@ import 'element-ui/lib/theme-chalk/index.css';
 import jquery from 'jquery';
 import './assets/scss/style.scss'
 import './assets/css/iconfont.css'
+import water from 'vue-waterfall2'
+import VueLazyload from "vue-lazyload";
 
 VueMarkdownEditor.use(vuepressTheme, {
   Prism,
 });
 
+Vue.use(VueLazyload);
+Vue.use(water);
 Vue.use(ElementUI);
 Vue.use(VueMarkdownEditor);
 Vue.config.productionTip = false;
