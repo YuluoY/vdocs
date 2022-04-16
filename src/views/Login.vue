@@ -61,11 +61,16 @@
                 }
             },
             submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
+                this.$refs[formName].validate(async (valid) => {
                     if (valid) {
-                        this.$axios.post(`/admin/login`, this.userForm).then(res => {
-                            console.log(res.data)
-                        })
+                        const res = await this.$axios.post(`/web/login`, this.userForm);
+                        if (res) {
+                            await localStorage.setItem('vdocs-userInfo', JSON.stringify(res.data));
+                            await this.$router.push({
+                                name: 'Home',
+                                params: res.data
+                            })
+                        }
                     } else {
                         this.$message.warning("信息填写完后再提交！")
                         return false;
@@ -79,7 +84,6 @@
             },
         },
         mounted() {
-
         }
     }
 </script>

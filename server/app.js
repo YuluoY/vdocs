@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const fs = require('fs');
+/*const fs = require('fs');
 let path = '../docs';
 let docsPath = [];
 
@@ -22,15 +22,16 @@ docsPath = docsPath.concat(cycleDir(path));
 while (docsPath.some(Array.isArray)) {
     docsPath = [].concat(...docsPath);
 }
-app.docsPath = docsPath;
+app.docsPath = docsPath;*/
 
-require('./db')(app);
 app.use(require('cors')());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('./'));
-app.use('/', require('./router/adminRouter')(app));
-app.use('/', require('./router/webRouter')(app));
+require('./db')(app);
+require('./routes/rest/index')(app)
+require('./routes/admin/index')(app)
+require('./routes/web/index')(app)
 
 
 app.listen(3000, () => {

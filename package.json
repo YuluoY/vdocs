@@ -11,7 +11,10 @@
   },
   "main": ".eslintrc.js",
   "dependencies": {
+    "await-to-js": "^3.0.0",
     "core-js": "^3.6.5",
+    "dayjs": "^1.11.1",
+    "inflection": "^1.13.2",
     "sass": "^1.44.0",
     "sass-loader": "10.0",
     "vue": "^2.6.11",

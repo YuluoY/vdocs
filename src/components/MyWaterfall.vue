@@ -9,7 +9,7 @@
                     <div class="item-title fs-lg">{{ item.title }}</div>
                     <div class="item-detail py-3">
                         <span>
-                            &emsp;&emsp;{{ '人生而自由，而无往不在枷锁之中。'.repeat(Math.ceil(Math.random() * 15)) }}
+                            {{ '人生而自由，而无往不在枷锁之中。'.repeat(Math.ceil(Math.random() * 15)) }}
                         </span>
                         <span class="spread" @click.stop="spreadDetail">展开</span>
                     </div>
@@ -81,7 +81,7 @@
   @import "../assets/scss/variables";
 
   .item-body {
-    margin: 9px;
+    margin: 1rem;
 
     .hot {
       position: absolute;
@@ -107,7 +107,7 @@
         line-height: 1.5rem;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
-        font-family: "Adobe 黑体 Std R";
+        font-family: "Microsoft Himalaya";
       }
 
       .spread {
@@ -172,11 +172,11 @@
     background: #ffffff;
     border-radius: 6px;
     box-sizing: border-box;
-    box-shadow: 0px 0px 10px map-get($colors, 'grey-1');
-    transition: width 0.6s;
+    box-shadow: 0px 0px 6px map-get($colors, 'grey-1');
+    transition: width 0.7s;
 
     &:hover {
-      box-shadow: 0px 0px 20px map-get($colors, 'grey-1');
+      box-shadow: 0px 0px 24px map-get($colors, 'grey-1');
       width: 100%;
       cursor: pointer;
     }

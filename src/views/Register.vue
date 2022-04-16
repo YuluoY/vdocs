@@ -76,17 +76,20 @@
                 }
             },
             submitForm() {
-                this.$refs.stuForm.validate((valid) => {
+                this.$refs.stuForm.validate(async (valid) => {
                     if (valid) {
-                        this.$axios.post('/admin/register', this.userInfo).then(res => {
-                            if (res.data) {
+                        try {
+                            const res = await this.$axios.post('/web/register', this.userInfo);
+                            if (res) {
                                 this.$message.success(`"${this.userInfo.username}"注册成功, 3秒后跳转到登录页面！`);
                                 this.userInfo = {};
                                 setTimeout(() => {
                                     this.$router.push({name: 'Login'});
                                 }, 3000)
                             }
-                        })
+                        } catch (err) {
+                            this.$message.error(err.message);
+                        }
                     } else {
                         this.$message.error("请正确填写表单后提交！")
                         return false;

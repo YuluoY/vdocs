@@ -16,11 +16,13 @@ import './assets/scss/style.scss'
 import './assets/css/iconfont.css'
 import water from 'vue-waterfall2'
 import VueLazyload from "vue-lazyload";
+import Navbar from "@/components/Navbar";
 
 VueMarkdownEditor.use(vuepressTheme, {
-  Prism,
+    Prism,
 });
-
+Vue.mixin(import('./mixin'));
+Vue.component(Navbar.name, Navbar);
 Vue.use(VueLazyload);
 Vue.use(water);
 Vue.use(ElementUI);
@@ -30,8 +32,8 @@ Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 Vue.prototype.$ = jquery;
 new Vue({
-  store,
-  axios,
-  router,
-  render: (h) => h(App),
+    store,
+    axios,
+    router,
+    render: (h) => h(App),
 }).$mount("#app");

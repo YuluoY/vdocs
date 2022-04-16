@@ -1,9 +1,9 @@
 <template>
-    <div id="navbar" class="w-100 bg-white">
+    <div id="navbar" class="w-100 bg-white" v-if="">
         <div class="top-bar d-flex jc-between">
             <div class="d-flex ai-center ml-3">
                 <router-link to="/" tag="a"><img class="logo ml-3 my-1 bg-grey" :src="nav.logo"></router-link>
-                <span class="name fs-lg mx-1">{{ nav.name }}</span>
+                <span class="name fs-lg mx-1">{{ nav.username }}</span>
             </div>
             <div class="nav d-flex ai-center jc-end fs-md text-ellipse">
                 <router-link
@@ -26,7 +26,7 @@
     import {mapState} from "vuex";
 
     export default {
-        name: "NavBar",
+        name: "Navbar",
         computed: {
             ...mapState({nav: 'navbar'})
         },
@@ -40,13 +40,19 @@
                 }
                 return initial + arr.join('');
             },
-            isActive() {
-                location.href
-            }
+            isMobile: function () {
+                const ua = navigator.userAgent;
+                return ((ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1) ||
+                    (!!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)));
+            },
         },
-        mounted() {
-            console.log()
-        }
+        beforeMount() {
+            if (this.isMobile()) {
+                this.$('html').css('font-size', '9px');
+            }
+            const userInfo = JSON.parse(localStorage.getItem('vdocs-userInfo'))
+            this.$store.commit('setNavbar', userInfo);
+        },
     }
 </script>
 
@@ -54,7 +60,7 @@
   #navbar {
     position: sticky; // 顶部导航栏吸顶
     top: 0;
-    z-index: 99;
+    z-index: 99999999999;
     box-shadow: 0px 0px 20px #A7B1C0;
   }
 

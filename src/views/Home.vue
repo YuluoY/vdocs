@@ -1,5 +1,6 @@
 <template>
     <div id="home">
+        <Navbar></Navbar>
         <Main></Main>
         <Footer></Footer>
     </div>
@@ -11,7 +12,7 @@
 
     export default {
         name: "Home",
-        components: {Footer,  Main}
+        components: {Footer,  Main},
     }
 </script>
 

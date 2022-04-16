@@ -7,7 +7,7 @@ export default new Vuex.Store({
     state: {
         navbar: {
             logo: require('@/assets/logo.png'),
-            name: '雨落',
+            username: '雨落',
             navInfo: ['Home', 'Article', 'Note', 'TimeLine', 'Category', 'Log', 'About', 'GitHub']
         },
         abstractWrapper: [
@@ -89,7 +89,11 @@ export default new Vuex.Store({
             }
         }
     },
-    mutations: {},
+    mutations: {
+        setNavbar(state, userInfo) {
+            Object.assign(state.navbar, userInfo);
+        }
+    },
     actions: {},
     modules: {},
 });

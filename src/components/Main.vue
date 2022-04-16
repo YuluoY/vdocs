@@ -1,9 +1,5 @@
 <template>
     <div id="main" class="d-flex jc-center">
-        <!--        <div class="card-list mt-4">-->
-        <!--            <card-pagination :abstractWrapper="abstractWrapper"></card-pagination>-->
-        <!--        </div>-->
-        <!--        <main-side-bar v-if="!isMobile"></main-side-bar>-->
         <div class="container">
             <div class="waterfall">
                 <my-waterfall :data="cardList"></my-waterfall>
@@ -14,15 +10,11 @@
 
 <script>
     import MyWaterfall from "@/components/MyWaterfall";
-    import Card from "@/components/Card";
-    import CardPagination from "@/components/CardPagination";
-    import MainSideBar from "@/components/MainSideBar";
-    import {isMobile} from "@/core/util";
     import {mapState} from "vuex";
 
     export default {
         name: "Main",
-        components: {MainSideBar, CardPagination, Card, MyWaterfall},
+        components: {MyWaterfall},
         data() {
             return {
                 isMobile: false,
