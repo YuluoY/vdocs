@@ -1,6 +1,7 @@
 const db = require('mongoose');
 
 const schema = new db.Schema({
+    picture: {type: String, default: 'http://localhost:3000/upload/admin/default.jpg'},
     username: {type: String, default: 'Anonymous', unique: true},
     password: {type: String, required: true, minlength: 6},
     age: {type: Number, default: 3, max: 150, min: 0},

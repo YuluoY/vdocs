@@ -13,8 +13,8 @@
                     <el-submenu index="2">
                         <template slot="title"><i class="el-icon-message"></i>文章管理</template>
                         <el-menu-item-group>
-                            <el-menu-item index="2-1">文章列表</el-menu-item>
-                            <el-menu-item index="2-2">新建文章</el-menu-item>
+                            <el-menu-item index="articleList">文章列表</el-menu-item>
+                            <el-menu-item index="editArticle">新建文章</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-submenu index="3">

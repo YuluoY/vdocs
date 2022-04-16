@@ -17,6 +17,15 @@ import './assets/css/iconfont.css'
 import water from 'vue-waterfall2'
 import VueLazyload from "vue-lazyload";
 import Navbar from "@/components/Navbar";
+import hljs from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
+// 定义一个全局指令
+Vue.directive('highlight', function (el) {
+    let blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block) => {
+        hljs.highlightBlock(block)
+    })
+})
 
 VueMarkdownEditor.use(vuepressTheme, {
     Prism,

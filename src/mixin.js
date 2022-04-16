@@ -1,6 +1,7 @@
 export default {
-    methods: {
-
-    },
+    methods: {},
+    mounted() {
+        console.log(document.querySelectorAll('code'))
+    }
 
 }

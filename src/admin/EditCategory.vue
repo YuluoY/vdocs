@@ -3,8 +3,8 @@
         <el-card>
             <el-divider content-position="left">{{ title }}</el-divider>
             <el-form>
-                <el-form-item label="类别名称" required style="text-align: left">
-                    <el-select v-model="model.parent" multiple placeholder="请选择">
+                <el-form-item label="父级类别" required style="text-align: left">
+                    <el-select v-model="model.parent" multiple placeholder="请选择父级类别">
                         <el-option
                                 v-for="item in categories"
                                 :key="item._id"

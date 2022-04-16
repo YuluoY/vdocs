@@ -6,6 +6,15 @@
                 style="width: 100%; text-align: center">
             <el-table-column label="ID" prop="_id"></el-table-column>
             <el-table-column label="类别名称" prop="name"></el-table-column>
+            <el-table-column label="父级类别" prop="parent">
+                <template slot-scope="scope">
+                    <span v-for="(p,i) in scope.row.parent" :key="i">
+                        {{
+                            cateMapper.get(p) + (i + 1 === scope.row.parent.length ? '' : '/')
+                        }}
+                    </span>
+                </template>
+            </el-table-column>
             <el-table-column align="right">
                 <template slot="header" slot-scope="scope">
                     <el-input
@@ -43,11 +52,13 @@
                 currentPage: 1,
                 pageCapacity: 10,
                 total: 0,
+                cateMapper: {},
             }
         },
         methods: {
-            handleCurrentChange(val) {
-
+            async handleCurrentChange(val) {
+                this.currentPage = val;
+                await this.fetchCategoryList();
             },
             handleEdit(index, row) {
                 this.$router.push({
@@ -66,6 +77,11 @@
             },
             async fetchCategoryList() {
                 const res = await this.$axios.get(`/admin/findPagination/category/${this.currentPage}/${this.pageCapacity}`);
+
+                this.cateMapper = new Map();
+                const cateAllId = await this.$axios.get(`/rest/category`);
+                cateAllId.data.forEach(item => this.cateMapper.set(item._id, item.name));
+
                 this.categoryListData = res.data.list;
                 this.total = res.data.total;
             }

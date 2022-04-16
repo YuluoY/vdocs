@@ -5,13 +5,18 @@
                 :data="userListData.filter(data => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
                 style="width: 100%; text-align: center">
             <el-table-column label="ID" prop="_id" width="215"></el-table-column>
+            <el-table-column label="头像">
+                <template v-slot="scope">
+                    <el-image :src="scope.row.picture" lazy style="border-radius:10px;"></el-image>
+                </template>
+            </el-table-column>
             <el-table-column label="用户名" prop="username" width="120"></el-table-column>
             <el-table-column label="密码" prop="password" width="220"></el-table-column>
-            <el-table-column label="年龄" prop="age" width="90"></el-table-column>
-            <el-table-column label="性别" prop="gender" width="90"></el-table-column>
-            <el-table-column label="注册日期" prop="date"></el-table-column>
-            <el-table-column label="管理员" prop="isAdmin" width="90" :formatter="formatterIsAdmin"></el-table-column>
-            <el-table-column align="right">
+            <el-table-column label="年龄" prop="age" width="50"></el-table-column>
+            <el-table-column label="性别" prop="gender" width="50"></el-table-column>
+            <el-table-column label="注册日期" prop="date" width="100"></el-table-column>
+            <el-table-column label="管理员" prop="isAdmin" width="70" :formatter="formatterIsAdmin"></el-table-column>
+            <el-table-column align="right" width="200">
                 <template slot="header" slot-scope="scope">
                     <el-input
                             v-model="search"

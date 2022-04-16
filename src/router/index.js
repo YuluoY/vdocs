@@ -55,6 +55,16 @@ const routes = [
                 name: 'EditCategory',
                 path: '/editCategory',
                 component: () => import('../admin/EditCategory')
+            },
+            {
+                name: 'ArticleList',
+                path: '/articleList',
+                component: () => import('../admin/ArticleList')
+            },
+            {
+                name: 'EditArticle',
+                path: '/editArticle',
+                component: () => import('../admin/EditArticle')
             }
         ]
     }
